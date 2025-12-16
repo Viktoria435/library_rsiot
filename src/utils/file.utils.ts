@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Link } from '../common/Link';
-import { decryptData, encryptData } from './crypto.utils';
-
 function isLinkString(value: string | undefined) {
   if (!value) return false;
   return /^[a-zA-Z]+:[^:]+$/.test(value);
 }
 
-function parseTxtRowInternal(row: string): any {
+export function parseTxtRow(row: string): any {
   if (typeof row !== 'string') {
     throw new Error('parseTxtRow: row is not string: ' + JSON.stringify(row));
   }
@@ -53,7 +51,7 @@ function parseTxtRowInternal(row: string): any {
   return obj;
 }
 
-function serializeTxtRowInternal(obj: any): string {
+export function serializeTxtRow(obj: any): string {
   return Object.entries(obj)
     .map(([key, value]) => {
       if (value instanceof Link) {
@@ -75,14 +73,4 @@ function serializeTxtRowInternal(obj: any): string {
       return `${key}=${value as string}`;
     })
     .join(';');
-}
-
-export async function parseTxtRow(encryptedRow: string): Promise<any> {
-  const decrypted = await decryptData(encryptedRow);
-  return parseTxtRowInternal(decrypted);
-}
-
-export async function serializeTxtRow(obj: any): Promise<string> {
-  const serialized = serializeTxtRowInternal(obj);
-  return await encryptData(serialized);
 }

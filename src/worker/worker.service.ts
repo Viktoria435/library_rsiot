@@ -74,9 +74,7 @@ export class WorkerService {
     };
 
     workers.push(newWorker);
-    await this.file.writeLines(
-      await Promise.all(workers.map((worker) => serializeTxtRow(worker))),
-    );
+    await this.file.writeLines(workers.map(serializeTxtRow));
 
     return newWorker;
   }
@@ -94,9 +92,7 @@ export class WorkerService {
       ...workers[index],
       ...dto,
     };
-    await this.file.writeLines(
-      await Promise.all(workers.map((worker) => serializeTxtRow(worker))),
-    );
+    await this.file.writeLines(workers.map(serializeTxtRow));
     return workers[index];
   }
 
@@ -107,9 +103,7 @@ export class WorkerService {
     if (index === -1) return false;
 
     workers.splice(index, 1);
-    await this.file.writeLines(
-      await Promise.all(workers.map((worker) => serializeTxtRow(worker))),
-    );
+    await this.file.writeLines(workers.map(serializeTxtRow));
 
     return true;
   }
@@ -135,8 +129,6 @@ export class WorkerService {
 
     workers[index] = target;
 
-    await this.file.writeLines(
-      await Promise.all(workers.map((worker) => serializeTxtRow(worker))),
-    );
+    await this.file.writeLines(workers.map(serializeTxtRow));
   }
 }

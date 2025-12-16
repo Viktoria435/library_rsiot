@@ -46,7 +46,7 @@ export class VisitorService {
     };
 
     const lines = await this.file.readLines();
-    lines.push(await serializeTxtRow(newVisitor));
+    lines.push(serializeTxtRow(newVisitor));
     await this.file.writeLines(lines);
 
     return newVisitor;
@@ -59,9 +59,7 @@ export class VisitorService {
       throw new NotFoundException(`Visitor with id ${id} not found`);
 
     visitors[index] = { ...visitors[index], ...dto };
-    await this.file.writeLines(
-      await Promise.all(visitors.map((visitor) => serializeTxtRow(visitor))),
-    );
+    await this.file.writeLines(visitors.map(serializeTxtRow));
     return visitors[index];
   }
 
@@ -78,9 +76,7 @@ export class VisitorService {
     }
 
     visitors.splice(index, 1);
-    await this.file.writeLines(
-      await Promise.all(visitors.map((visitor) => serializeTxtRow(visitor))),
-    );
+    await this.file.writeLines(visitors.map(serializeTxtRow));
   }
 
   async addCurrentBooks(visitorId: string, books: Book[]): Promise<void> {
@@ -94,9 +90,7 @@ export class VisitorService {
     visitors[visitorIndex].currentBooks.push(
       ...books.map((b) => bookLinkManager.toLink(b.id)),
     );
-    await this.file.writeLines(
-      await Promise.all(visitors.map((visitor) => serializeTxtRow(visitor))),
-    );
+    await this.file.writeLines(visitors.map(serializeTxtRow));
   }
 
   async moveToHistory(visitorId: string, books: Book[]): Promise<void> {
@@ -124,9 +118,7 @@ export class VisitorService {
       visitor.history.push(removedBook);
     }
 
-    await this.file.writeLines(
-      await Promise.all(visitors.map((visitor) => serializeTxtRow(visitor))),
-    );
+    await this.file.writeLines(visitors.map(serializeTxtRow));
   }
 
   async hasBook(visitorId: string, bookId: string): Promise<boolean> {

@@ -34,7 +34,7 @@ export class BookService {
       status: BookStatus.AVAILABLE,
     };
     const lines = await this.file.readLines();
-    lines.push(await serializeTxtRow(newBook));
+    lines.push(serializeTxtRow(newBook));
     await this.file.writeLines(lines);
     return newBook;
   }
@@ -44,9 +44,7 @@ export class BookService {
     const index = books.findIndex((b) => b.id === id);
     if (index === -1) return null;
     books[index] = { ...books[index], ...dto };
-    await this.file.writeLines(
-      await Promise.all(books.map((book) => serializeTxtRow(book))),
-    );
+    await this.file.writeLines(books.map(serializeTxtRow));
     return books[index];
   }
 
@@ -55,9 +53,7 @@ export class BookService {
     const index = books.findIndex((b) => b.id === id);
     if (index === -1) return false;
     books.splice(index, 1);
-    await this.file.writeLines(
-      await Promise.all(books.map((book) => serializeTxtRow(book))),
-    );
+    await this.file.writeLines(books.map(serializeTxtRow));
     return true;
   }
 
@@ -81,9 +77,7 @@ export class BookService {
       borrowed.push(book);
     }
 
-    await this.file.writeLines(
-      await Promise.all(books.map((book) => serializeTxtRow(book))),
-    );
+    await this.file.writeLines(books.map(serializeTxtRow));
     return borrowed;
   }
 
@@ -115,9 +109,7 @@ export class BookService {
       returned.push(book);
     }
 
-    await this.file.writeLines(
-      await Promise.all(books.map((book) => serializeTxtRow(book))),
-    );
+    await this.file.writeLines(books.map(serializeTxtRow));
     return returned;
   }
 }
