@@ -8,7 +8,7 @@ export abstract class LinkManager<T> {
   protected abstract tableName: string;
 
   private getFile() {
-    return new FileManager(`src/data/${this.fileName}`);
+    return new FileManager(`../data/${this.fileName}`);
   }
 
   toLink(id: string): Link {

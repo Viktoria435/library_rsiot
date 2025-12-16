@@ -4,20 +4,20 @@ import {
   NotFoundException,
   BadRequestException,
 } from '@nestjs/common';
-import { FileManager } from 'src/utils/file-manager';
-import { parseTxtRow, serializeTxtRow } from 'src/utils/file.utils';
+import { FileManager } from '../utils/file-manager';
+import { parseTxtRow, serializeTxtRow } from '../utils/file.utils';
 import { Visitor } from './dto/visitor.dto';
 import { randomUUID } from 'crypto';
 import { CreateVisitorDto } from './dto/create-visitor.dto';
 import { UpdateVisitorDto } from './dto/update-visitor.dto';
-import { Book } from 'src/book/dto/book.dto';
-import { bookLinkManager } from 'src/common/book-link-manager';
-import { VisitorLinkManager } from 'src/common/visitor-link-manager';
-import { Link } from 'src/common/Link';
+import { Book } from '../book/dto/book.dto';
+import { bookLinkManager } from '../common/book-link-manager';
+import { VisitorLinkManager } from '../common/visitor-link-manager';
+import { Link } from '../common/Link';
 
 @Injectable()
 export class VisitorService {
-  private file = new FileManager('src/data/visitors.txt');
+  private file = new FileManager('../data/visitors.txt');
   private visitorLinkManager: VisitorLinkManager = new VisitorLinkManager();
 
   async getAll(): Promise<Visitor[]> {

@@ -14,10 +14,10 @@ import { VisitorService } from '../visitor/visitor.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { BorrowBookDto } from './dto/borrow-book.dto';
 import { ReturnBookDto } from './dto/return-book.dto';
-import { DateUtils } from 'src/utils/date.utils';
-import { WorkerService } from 'src/worker/worker.service';
+import { DateUtils } from '../utils/date.utils';
+import { WorkerService } from '../worker/worker.service';
 import { UpdateBookDto } from './dto/update-book.dto';
-import { buildDownloadFile } from 'src/utils/download.utils';
+import { buildDownloadFile } from '../utils/download.utils';
 
 @Controller('books')
 export class BookController {

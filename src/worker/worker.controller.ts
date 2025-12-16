@@ -21,9 +21,9 @@ import {
 import { WorkerService } from './worker.service';
 import { Worker } from './dto/worker.dto';
 import { CreateWorkerDto } from './dto/create-worker.dto';
-import { DayOfWeek } from 'src/types/worker.types';
-import { WorkerWithBooks } from 'src/common/worker-link-manager';
-import { buildDownloadFile } from 'src/utils/download.utils';
+import { DayOfWeek } from '../types/worker.types';
+import { WorkerWithBooks } from '../common/worker-link-manager';
+import { buildDownloadFile } from '../utils/download.utils';
 
 @ApiTags('Workers')
 @Controller('workers')

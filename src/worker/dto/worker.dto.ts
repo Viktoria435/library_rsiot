@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsInt, IsNotEmpty, IsString, Min } from 'class-validator';
-import { Link } from 'src/common/Link';
-import { DayOfWeek } from 'src/types/worker.types';
+import { Link } from '../../common/Link';
+import { DayOfWeek } from '../../types/worker.types';
 
 export class Worker {
   @ApiProperty({ example: '3fa85f64-5717-4562-b3fc-2c963f66afa6' })

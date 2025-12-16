@@ -11,7 +11,7 @@ import { VisitorService } from './visitor.service';
 import { Visitor } from './dto/visitor.dto';
 import { CreateVisitorDto } from './dto/create-visitor.dto';
 import { UpdateVisitorDto } from './dto/update-visitor.dto';
-import { buildDownloadFile } from 'src/utils/download.utils';
+import { buildDownloadFile } from '../utils/download.utils';
 
 @Controller('visitors')
 export class VisitorController {

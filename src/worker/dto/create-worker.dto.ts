@@ -10,7 +10,7 @@ import {
   Min,
   Max,
 } from 'class-validator';
-import { DayOfWeek } from 'src/types/worker.types';
+import { DayOfWeek } from '../../types/worker.types';
 
 export class CreateWorkerDto {
   @ApiProperty({

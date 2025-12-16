@@ -9,7 +9,7 @@ import {
   IsNotEmpty,
   IsEnum,
 } from 'class-validator';
-import { BookStatus, Genre } from 'src/types/book.types';
+import { BookStatus, Genre } from '../../types/book.types';
 
 export class Book {
   @ApiProperty({

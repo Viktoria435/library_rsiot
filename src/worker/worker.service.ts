@@ -1,21 +1,21 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'crypto';
-import { Book } from 'src/book/dto/book.dto';
-import { bookLinkManager } from 'src/common/book-link-manager';
+import { Book } from '../book/dto/book.dto';
+import { bookLinkManager } from '../common/book-link-manager';
 import {
   WorkerLinkManager,
   WorkerWithBooks,
-} from 'src/common/worker-link-manager';
-import { FileManager } from 'src/utils/file-manager';
-import { parseTxtRow, serializeTxtRow } from 'src/utils/file.utils';
+} from '../common/worker-link-manager';
+import { FileManager } from '../utils/file-manager';
+import { parseTxtRow, serializeTxtRow } from '../utils/file.utils';
 import { CreateWorkerDto } from './dto/create-worker.dto';
 import { Worker } from './dto/worker.dto';
-import { DayOfWeek } from 'src/types/worker.types';
-import { Link } from 'src/common/Link';
+import { DayOfWeek } from '../types/worker.types';
+import { Link } from '../common/Link';
 
 @Injectable()
 export class WorkerService {
-  private file = new FileManager('src/data/workers.txt');
+  private file = new FileManager('../data/workers.txt');
   private workerLinkManager = new WorkerLinkManager();
 
   async getAll(): Promise<Worker[]> {

@@ -8,7 +8,7 @@ import {
   ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { Link } from 'src/common/Link';
+import { Link } from '../../common/Link';
 
 export class Visitor {
   @ApiProperty({

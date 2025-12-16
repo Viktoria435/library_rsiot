@@ -7,15 +7,15 @@ import { Book } from './dto/book.dto';
 import { FileManager } from '../utils/file-manager';
 import { parseTxtRow, serializeTxtRow } from '../utils/file.utils';
 import { randomUUID } from 'crypto';
-import { BookStatus } from 'src/types/book.types';
+import { BookStatus } from '../types/book.types';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { Visitor } from '../visitor/dto/visitor.dto';
-import { bookLinkManager } from 'src/common/book-link-manager';
+import { bookLinkManager } from '../common/book-link-manager';
 
 @Injectable()
 export class BookService {
-  private file = new FileManager('src/data/books.txt');
+  private file = new FileManager('../data/books.txt');
 
   async getAll(): Promise<Book[]> {
     const lines = await this.file.readLines();
