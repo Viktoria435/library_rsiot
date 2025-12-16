@@ -15,7 +15,7 @@ import { Link } from '../common/Link';
 
 @Injectable()
 export class WorkerService {
-  private file = new FileManager('../data/workers.txt');
+  private file = new FileManager('src/data/workers.txt');
   private workerLinkManager = new WorkerLinkManager();
 
   async getAll(): Promise<Worker[]> {

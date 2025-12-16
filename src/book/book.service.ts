@@ -15,7 +15,7 @@ import { bookLinkManager } from '../common/book-link-manager';
 
 @Injectable()
 export class BookService {
-  private file = new FileManager('../data/books.txt');
+  private file = new FileManager('src/data/books.txt');
 
   async getAll(): Promise<Book[]> {
     const lines = await this.file.readLines();

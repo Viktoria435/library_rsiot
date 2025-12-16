@@ -17,7 +17,7 @@ import { Link } from '../common/Link';
 
 @Injectable()
 export class VisitorService {
-  private file = new FileManager('../data/visitors.txt');
+  private file = new FileManager('src/data/visitors.txt');
   private visitorLinkManager: VisitorLinkManager = new VisitorLinkManager();
 
   async getAll(): Promise<Visitor[]> {
