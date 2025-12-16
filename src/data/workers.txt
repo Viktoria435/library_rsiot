@@ -1,1 +1,0 @@
-id=77c37ac4-101c-47a5-a064-b4927e21fc8c;name=John;surname=Doe;experience=5;workDays=["Monday","Wednesday","Friday"];issuedBooks=["books:ccb1b578-8343-45de-a465-007af8af7c28","books:9ac18f0d-8bf7-4dfd-aa20-cc9b1b66e610"]
