@@ -1,0 +1,1 @@
+id=10441103-8fc4-4975-8b6b-c26f87dcbc7c;name=John;surname=Doe;registrationDate="2025-12-15T11:50:53.837Z";currentBooks=["books:ccb1b578-8343-45de-a465-007af8af7c28","books:9ac18f0d-8bf7-4dfd-aa20-cc9b1b66e610"];history=[]
