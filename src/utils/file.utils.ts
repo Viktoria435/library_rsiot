@@ -36,6 +36,11 @@ export function parseTxtRow(row: string): any {
       continue;
     }
 
+    if (value && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/.test(value)) {
+      obj[key] = new Date(value);
+      continue;
+    }
+
     if (value?.startsWith('[') || value?.startsWith('{')) {
       try {
         obj[key] = JSON.parse(value) as unknown;
@@ -64,6 +69,10 @@ export function serializeTxtRow(obj: any): string {
 
       if (Array.isArray(value) && value.length === 0) {
         return `${key}=[]`;
+      }
+
+      if (value instanceof Date) {
+        return `${key}=${value.toISOString()}`;
       }
 
       if (typeof value === 'object') {
