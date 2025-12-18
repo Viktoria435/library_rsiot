@@ -39,13 +39,6 @@ export class WorkerService {
     const filtered = enriched.filter((w) =>
       w.workDays.some((day) => workDays.includes(day)),
     );
-
-    if (filtered.length === 0) {
-      throw new NotFoundException(
-        `No workers found with work days: ${workDays.join(', ')}`,
-      );
-    }
-
     return filtered;
   }
 
